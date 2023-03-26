@@ -42,6 +42,7 @@ const animateText = throttle((event) => {
         el.animate([{
             fontWeight: `${1000 * Math.pow(relativePos, 2)}`,
             fontStretch: `${125 * Math.pow(relativePos, 2)}%`,
+            fontVariationSettings: `'ital' ${Math.pow(relativePos, 2)}` //     font-variation-settings: 'ital' 1;
         }], {
             fill: "forwards",
             duration: 300

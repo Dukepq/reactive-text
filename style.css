@@ -1,15 +1,14 @@
 @font-face {
-    font-family: 'Encode sans';
-    src: url('fonts/EncodeSans-VariableFont.woff2') format('woff2-variations');
-    font-weight: 100 900;
-
+    font-family:'Compressa VF';
+	src: url('https://res.cloudinary.com/dr6lvwubh/raw/upload/v1529908256/CompressaPRO-GX.woff2');
+	font-style: normal;
 }
 
 body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Encode sans'
+    font-family: 'Compressa VF'
 }
 
 header {
@@ -25,7 +24,7 @@ h1 {
     display: flex;
     justify-content: center;
     position: relative;
-    font-size: 15rem;
+    font-size: 12rem;
     transition: 0.5s;
     font-weight: 500;
     user-select: none;
