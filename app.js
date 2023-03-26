@@ -41,10 +41,10 @@ const animateText = throttle((event) => {
         const relativePos = 1 - Math.abs((el.offsetLeft + (el.getBoundingClientRect().width / 2) - x) / title.getBoundingClientRect().width)
         el.animate([{
             fontWeight: `${1000 * Math.pow(relativePos, 2)}`,
-            fontStretch: `${125 * Math.pow(relativePos, 2)}%`
+            fontStretch: `${125 * Math.pow(relativePos, 2)}%`,
         }], {
             fill: "forwards",
-            duration: 500
+            duration: 300
         })
 })
 }, 50)

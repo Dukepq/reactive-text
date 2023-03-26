@@ -25,7 +25,8 @@ h1 {
     display: flex;
     justify-content: center;
     position: relative;
-    font-size: 12rem;
+    font-size: 15rem;
     transition: 0.5s;
     font-weight: 500;
+    user-select: none;
 }
