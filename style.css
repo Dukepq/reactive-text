@@ -17,7 +17,6 @@ body {
 header {
     display: grid;
     height: 100vh;
-    width: 100vw;
     place-items: center;
     background-color: rgb(65, 65, 65);
     color: rgb(249, 82, 82);
@@ -30,13 +29,5 @@ h1 {
     justify-content: center;
     position: relative;
     font-size: 12rem;
-    font-stretch: 100%;
     transition: 0.5s;
-}
-
-.span-obj {
-    display: flex;
-    justify-content: center;
-    font-weight: 600;
-    font-stretch: 800;
 }
