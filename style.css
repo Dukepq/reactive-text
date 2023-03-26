@@ -10,8 +10,6 @@ body {
     padding: 0;
     box-sizing: border-box;
     font-family: 'Encode sans'
-
-
 }
 
 header {
@@ -29,4 +27,5 @@ h1 {
     position: relative;
     font-size: 12rem;
     transition: 0.5s;
+    font-weight: 500;
 }
