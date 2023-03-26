@@ -50,7 +50,7 @@ const animateText = throttle((event) => {
             fontStretch: `${125 * Math.pow(relativePos, 2)}%`
         }], {
             fill: "forwards",
-            duration: 250
+            duration: 500
         })
         // console.log(el.style.width = `${160 * relativePos}px`)
         // el.style.fontWeight = `${1100*relativePos}`
