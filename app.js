@@ -1,5 +1,8 @@
-const allSpanObj = document.querySelectorAll('.span-obj')
+import { splitWrap } from "./SplitAndWrap.js"
+
 const title = document.querySelector('.title')
+const spans = splitWrap(title)
+
 
 const cursor = {
     x: 0,
@@ -35,9 +38,7 @@ const animateText = throttle((event) => {
 
     const x = event.clientX - rect.left
     const y = event.offsetY - rect.top
-    let test = 1 - Math.abs((allSpanObj[3].offsetLeft + (allSpanObj[3].getBoundingClientRect().width / 2) - x) / title.getBoundingClientRect().width)
-    console.log(test)
-    allSpanObj.forEach((el) => {
+    spans.forEach((el) => {
         const relativePos = 1 - Math.abs((el.offsetLeft + (el.getBoundingClientRect().width / 2) - x) / title.getBoundingClientRect().width)
         el.animate([{
             fontWeight: `${1000 * Math.pow(relativePos, 2)}`,
