@@ -55,3 +55,5 @@ const animateText = throttle((event) => {
 title.onmousemove = (event) => {
     animateText(event)
 }
+
+title.ontouchmove = event => animateText(event.touches[0])
