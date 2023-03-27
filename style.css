@@ -12,19 +12,20 @@ body {
 }
 
 header {
-    display: grid;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     height: 100vh;
-    place-items: center;
     background-color: rgb(65, 65, 65);
     color: rgb(249, 82, 82);
 }
 
 h1 {
+    margin: 0;
     text-rendering: optimizeSpeed;
-    display: flex;
-    justify-content: center;
+    align-self: center;
     position: relative;
-    font-size: 18vw;
+    font-size: 12vw;
     transition: 0.5s;
     font-weight: 500;
     user-select: none;
