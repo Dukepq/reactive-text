@@ -1,14 +1,9 @@
-import { splitWrap } from "./SplitAndWrap.js"
+import { splitWrap } from "./SplitAndWrap.js";
 
 const title = document.querySelector('.title')
-const spans = splitWrap(title)
 
 
-const cursor = {
-    x: 0,
-    y: 0,
-}
-
+// throttle function that will always return the last known position.
 function throttle(callback, timeout = 1000) {
     let wait = false
     let waitingArgs
@@ -32,13 +27,13 @@ function throttle(callback, timeout = 1000) {
     }
 }
 
-const animateText = throttle((event) => {
-    //offsetX, offsetY
-    const rect = title.getBoundingClientRect()
-
+splitWrap(title) // stays outside of the function considering it only needs to be called once.
+const animateTextOnMove = throttle((event, spanParent) => {
+    const rect = spanParent.getBoundingClientRect()
+    const spanArray = Array.prototype.slice.call(spanParent.children) //element.children returns obj, converting to array here.
     const x = event.clientX - rect.left
     const y = event.offsetY - rect.top
-    spans.forEach((el) => {
+    spanArray.forEach((el) => {
         const relativePos = 1 - Math.abs((el.offsetLeft + (el.getBoundingClientRect().width / 2) - x) / title.getBoundingClientRect().width)
         el.animate([{
             fontWeight: `clamp(1, ${1000 * Math.pow(relativePos, 2)}, 1000)`,
@@ -52,7 +47,10 @@ const animateText = throttle((event) => {
 })
 }, 50)
 
+
+
 title.onmousemove = (event) => {
-    animateText(event)
+    animateTextOnMove(event, title)
 }
-title.ontouchmove = event => animateText(event.touches[0])
+
+title.ontouchmove = event => animateTextOnMove(event.touches[0], title)
