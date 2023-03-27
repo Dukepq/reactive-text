@@ -3,8 +3,15 @@ import { splitWrap } from "./SplitAndWrap.js";
 const title = document.querySelector('.title')
 
 
+function distance(x1, x2, y1, y2) {
+    const dx = x2 - x1;
+    const dy = y2 - y1;
+    const d = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2))
+    return d
+}
+
 // throttle function that will always return the last known position.
-function throttle(callback, timeout = 1000) {
+function throttle(callback, timeout = 50) {
     let wait = false
     let waitingArgs
     const timeoutFunc = () => {
@@ -27,14 +34,17 @@ function throttle(callback, timeout = 1000) {
     }
 }
 
+
 splitWrap(title) // stays outside of the function considering it only needs to be called once.
 const animateTextOnMove = throttle((event, spanParent) => {
-    const rect = spanParent.getBoundingClientRect()
     const spanArray = Array.prototype.slice.call(spanParent.children) //element.children returns obj, converting to array here.
-    const x = event.clientX - rect.left
-    const y = event.offsetY - rect.top
+    const x = event.clientX
+    const y = event.clientY  
     spanArray.forEach((el) => {
-        const relativePos = 1 - Math.abs((el.offsetLeft + (el.getBoundingClientRect().width / 2) - x) / title.getBoundingClientRect().width)
+        const elementX = (el.getBoundingClientRect().left + el.getBoundingClientRect().width / 2)
+        const elementY = (el.getBoundingClientRect().top + el.getBoundingClientRect().height / 2)
+        const d = distance(elementX, x, elementY, y)
+        const relativePos = (elementX - d) / elementX
         el.animate([{
             fontWeight: `clamp(1, ${1000 * Math.pow(relativePos, 2)}, 1000)`,
             fontStretch: `${125 * Math.pow(relativePos, 2)}%`,
@@ -43,8 +53,8 @@ const animateTextOnMove = throttle((event, spanParent) => {
             fill: "forwards",
             duration: 390,
             easing: "ease-out"
-        })
-})
+        })  
+    })
 }, 50)
 
 
