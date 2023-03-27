@@ -41,7 +41,7 @@ const animateText = throttle((event) => {
     spans.forEach((el) => {
         const relativePos = 1 - Math.abs((el.offsetLeft + (el.getBoundingClientRect().width / 2) - x) / title.getBoundingClientRect().width)
         el.animate([{
-            fontWeight: `${1000 * Math.pow(relativePos, 2)}`,
+            fontWeight: `clamp(1, ${1000 * Math.pow(relativePos, 2)}, 1000)`,
             fontStretch: `${125 * Math.pow(relativePos, 2)}%`,
             fontVariationSettings: `'ital' ${Math.pow(relativePos, 2)}`
         }], {
@@ -55,5 +55,4 @@ const animateText = throttle((event) => {
 title.onmousemove = (event) => {
     animateText(event)
 }
-
 title.ontouchmove = event => animateText(event.touches[0])
