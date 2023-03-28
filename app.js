@@ -41,8 +41,9 @@ const animateTextOnMove = throttle((event, spanParent) => {
     const x = event.clientX
     const y = event.clientY  
     spanArray.forEach((el) => {
-        const elementX = (el.getBoundingClientRect().left + el.getBoundingClientRect().width / 2)
-        const elementY = (el.getBoundingClientRect().top + el.getBoundingClientRect().height / 2)
+        const ElementDimensions = el.getBoundingClientRect()
+        const elementX = (ElementDimensions.x + ElementDimensions.width / 2)
+        const elementY = (ElementDimensions.y + ElementDimensions.height / 2)
         const d = distance(elementX, x, elementY, y)
         const relativePos = (elementX - d) / elementX
         el.animate([{
