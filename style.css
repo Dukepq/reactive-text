@@ -1,5 +1,5 @@
 @font-face {
-    font-family:'Compressa VF';
+    font-family:'Compressa';
 	src: url('https://res.cloudinary.com/dr6lvwubh/raw/upload/v1529908256/CompressaPRO-GX.woff2');
 	font-style: normal;
 }
@@ -8,7 +8,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Compressa VF'
+    font-family: 'Compressa', sans-serif
 }
 
 header {
@@ -16,17 +16,15 @@ header {
     flex-direction: column;
     justify-content: center;
     height: 100vh;
-    background-color: rgb(65, 65, 65);
-    color: rgb(249, 82, 82);
+    background-color: rgb(51, 51, 51);
+    color: rgb(255, 70, 70);
+    overflow: hidden;
 }
 
 h1 {
-    margin: 0;
     text-rendering: optimizeSpeed;
-    align-self: center;
     position: relative;
-    font-size: 12vw;
-    transition: 0.5s;
-    font-weight: 500;
+    font-size: 20vw;
     user-select: none;
+    margin: 0 auto;
 }
