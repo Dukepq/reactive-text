@@ -54,8 +54,14 @@ function Character(parent, character, reverse = false) {
     }
 
     this.CalculateProperties = (maxVal, minVal, distance) => {
-        let attr = maxVal - Math.abs(maxVal * distance / maxDistance)
-        return Math.max(minVal, attr + minVal)
+        if (!reverse) {
+            let attr = maxVal - Math.abs(maxVal * distance / maxDistance)
+            return Math.max(minVal, attr + minVal)
+        } else {
+            let attr = (maxVal - (maxVal - Math.abs(maxVal * distance / maxDistance))) * 0.5
+            return attr
+            
+        }
     }
 
     this.setProperties = () => {
@@ -66,9 +72,6 @@ function Character(parent, character, reverse = false) {
 
     return this
 }
-
-
-const title2 = document.querySelector('.title2')
 
 function textAnimation(title, reverse = false) {
     const characterList = []
