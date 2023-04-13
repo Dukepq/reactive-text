@@ -22,6 +22,11 @@ window.addEventListener('mousemove', (event) => {
     mouse.y = event.clientY;
 })
 
+window.addEventListener('touchmove', event => {
+    mouse.x = event.touches[0].clientX;
+    mouse.y = event.touches[0].clientY
+})
+
 // building a virtual position that lags behind the actual mouse position
 const virtualPos = {
     x: window.innerWidth,
